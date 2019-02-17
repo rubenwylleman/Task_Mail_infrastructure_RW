@@ -1,0 +1,44 @@
+# 2.2.33.2 (d6601f4ec): /etc/dovecot/dovecot.conf
+# Pigeonhole version 0.4.21 (92477967)
+# OS: Linux 4.15.0-45-generic x86_64 Ubuntu 18.04.1 LTS 
+mail_location = maildir:~/Maildir
+mail_privileged_group = mail
+namespace inbox {
+  inbox = yes
+  location = 
+  mailbox Drafts {
+    special_use = \Drafts
+  }
+  mailbox Junk {
+    special_use = \Junk
+  }
+  mailbox Sent {
+    special_use = \Sent
+  }
+  mailbox "Sent Messages" {
+    special_use = \Sent
+  }
+  mailbox Trash {
+    special_use = \Trash
+  }
+  prefix = 
+}
+passdb {
+  driver = pam
+}
+plugin {
+  autocreate = Trash
+  autocreate2 = Sent
+  autosubscribe = Trash
+  autosubscribe2 = Sent
+}
+protocols = " imap"
+ssl_cert = </etc/dovecot/private/dovecot.pem
+ssl_client_ca_dir = /etc/ssl/certs
+ssl_key =  # hidden, use -P to show it
+userdb {
+  driver = passwd
+}
+protocol imap {
+  mail_plugins = autocreate
+}
