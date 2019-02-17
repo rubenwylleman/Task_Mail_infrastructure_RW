@@ -1,0 +1,4 @@
+# See man 5 aliases for format
+root: wylleman
+postmaster:    wylleman
+everyone: u1, u2, u3
